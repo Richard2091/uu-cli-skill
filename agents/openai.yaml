@@ -1,0 +1,4 @@
+interface:
+  display_name: "UU CLI"
+  short_description: "Operate remote Windows PCs via UU Remote CLI"
+  default_prompt: "Use $uu-cli to operate a remote Windows PC through UU Remote command line."

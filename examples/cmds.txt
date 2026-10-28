@@ -1,0 +1,32 @@
+# Sample batch file for `uu-exec.py --batch`
+#
+# One command per line. Blank lines and lines starting with # are ignored.
+# The file is read as UTF-8 (BOM tolerated). Lines are further split on
+# top-level ';' when a line is too long for a single channel write.
+#
+# Usage:
+#   python scripts/uu-exec.py --batch examples/cmds.txt
+#   python scripts/uu-exec.py --batch examples/cmds.txt --json
+#   python scripts/uu-exec.py --batch examples/cmds.txt --stop-on-error
+
+hostname
+
+# OS and shell identity
+Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,LastBootUpTime
+$PSVersionTable.PSVersion.ToString()
+
+# Who is logged in
+(Get-Process -Id $PID).SessionId
+
+# Load snapshot
+@(Get-Process).Count
+@(Get-Service | Where-Object Status -eq Running).Count
+
+# Listening ports
+Get-NetTCPConnection -State Listen | Sort-Object LocalPort | Select-Object -First 20 LocalPort,OwningProcess
+
+# Disk space
+Get-PSDrive -PSProvider FileSystem | Select-Object Name,@{n='FreeGB';e={[int]($_.Free/1GB)}},@{n='UsedGB';e={[int]($_.Used/1GB)}}
+
+# Is the desktop locked? (logonui present == locked)
+(Get-Process logonui -EA 0 | Measure-Object).Count -gt 0

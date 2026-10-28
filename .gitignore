@@ -1,0 +1,31 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets — the skill stores the remembered lock-screen password here
+uu-cli.json
+uu-cli-secret.json
+*.secret.json
+
+# Local transcripts of real sessions
+*.local.md
+*.local.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test artifacts
+*.jpg
+*.png
+!docs/**/*.png
+!docs/**/*.jpg

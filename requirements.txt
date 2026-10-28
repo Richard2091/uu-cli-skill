@@ -1,0 +1,3 @@
+# Runtime dependency of the transport layer.
+# The CLI itself (uuyc-cli.exe) ships with the UU Remote client and is not a pip package.
+pywinpty>=2.0,<3
