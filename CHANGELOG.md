@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The README is split by language: `README.md` is English-only and `README.zh-CN.md` holds the
+  Chinese documentation, each linking to the other at the top.
+
 ## [0.3.0]
 
 First public release. The transport had been working privately for a while; this release is mostly
